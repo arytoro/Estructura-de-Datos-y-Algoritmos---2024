@@ -2,11 +2,13 @@
 from pila_secuencial import PilaSecuencial
 
 def mostrar_estado(p1,p2,p3):
-    print(f"""
-            Estado de las pilas
-    Pila 1: {p1.dimension()} discos
-    Pila 2: {p2.dimension()} discos
-    Pila 3: {p3.dimension()} discos""")
+    print("Estado de las pilas")
+    print("Pila 1: ")
+    p1.recorrer()
+    print("Pila 2: ")
+    p2.recorrer()
+    print("Pila 3: ")
+    p3.recorrer()
 
 def verificar_movimiento(pila_o,pila_d):
     valido=True
@@ -33,7 +35,7 @@ def movimiento(p1,p2,p3):
     opciones.remove(origen)
     destino=int(input(f"Ingresa el destino {opciones}: "))
 
-    if (origen in (1,2,3)) and (destino in (1,2,3)) and origen!=destino:
+    if (origen in (1,2,3)) and (destino in opciones):
         if origen==1:
             if destino==2:
                 validez= verificar_movimiento(p1,p2)
@@ -72,7 +74,7 @@ if __name__=="__main__":
 
     mostrar_estado(pila1,pila2,pila3)
     cont_movimientos=0
-    while pila3.dimension()!=num_discos:
+    while (pila1.vacia() is False) or (pila2.vacia() is False):
         if movimiento(pila1,pila2,pila3):
             print("Movimiento exitoso")
             cont_movimientos+=1
