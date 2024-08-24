@@ -9,10 +9,6 @@ class Impresion:
 
     def getTiempoImpresion(self):
         return self.__tiempo_impresion
-    def setTiempoImpresion(self,impresion):
-        self.__tiempo_impresion=impresion
-    
     def getTiempoEspera(self):
         return self.__tiempo_espera
-    def incrementarTiempoEspera(self):
-        self.__tiempo_espera+=1
+ 
