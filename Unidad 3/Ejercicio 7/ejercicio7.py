@@ -1,4 +1,4 @@
-"""Ejercicio 6 / Unidad 3 - Ary Toro"""
+"""Ejercicio 7 / Unidad 3 - Ary Toro"""
 from random import uniform,choice
 from cola_encadenada import ColaEncadenada
 
