@@ -1,8 +1,8 @@
 
 """Listas Ejercicio 2  / Unidad 3 - Ary Toro"""
 import numpy as np
-class ListaSecuencialContenido: #No pueden quedar espacios vacios. No puedo saltar del 1 al 4, seria pasar al 2
-    __ult:int #La ultima posicion. Ahí se insertara el nuevo
+class ListaSecuencialContenido:
+    __ult:int
     __arregloDatos:np.ndarray
     def __init__(self):
         self.__ult=0
