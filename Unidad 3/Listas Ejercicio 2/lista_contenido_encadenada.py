@@ -20,36 +20,48 @@ class ListaEncadenada:
             aux=aux.getSiguiente()
         return retorna
 
-    def anterior(self,pos):
+    def anterior(self,item):
         elemento=None
-        if pos>=0 and pos<self.__cont:
-            if pos==0:
-                print("El indice ingresado no cuenta con anterior; es el primero")
+        if not self.vacia():
+            aux1=self.__pri
+            pos=0
+            while aux1 is not None and aux1.getDato()!=item:
+                pos+=1
+                aux1=aux1.getSiguiente()
+            if aux1 is not None:
+                if pos==0:
+                    print("El elemento ingresado no cuenta con un anterior. Es el primero")
+                else:
+                    aux2=self.__pri
+                    for i in range(pos-1):
+                        aux2=aux2.getSiguiente()
+                    elemento=aux2.getDato()
             else:
-                i=0
-                aux=self.__pri
-                while i < pos-1:
-                    aux=aux.getSiguiente()
-                    i+=1
-                elemento=aux.getDato()
+                print(f"El elemento {item} no se encuentra en la lista")
         else:
-            print("El indice ingresado no es valido")
+            print("Pila Vacia. No existe el elemento",item)
         return elemento
 
-    def siguiente(self,pos):
+    def siguiente(self,item):
         elemento=None
-        if pos>=0 and pos<self.__cont:
-            if pos==self.__cont-1:
-                print("El indice ingresado no cuenta con siguiente; es el ultimo")
+        if not self.vacia():
+            aux1=self.__pri
+            pos=0
+            while aux1 is not None and aux1.getDato()!=item:
+                pos+=1
+                aux1=aux1.getSiguiente()
+            if aux1 is not None:
+                if pos==self.__cont-1:
+                    print("El elemento ingresado no cuenta con un siguiente. Es el ultimo")
+                else:
+                    aux2=self.__pri
+                    for i in range(pos+1):
+                        aux2=aux2.getSiguiente()
+                    elemento=aux2.getDato()
             else:
-                i=0
-                aux=self.__pri
-                while i <= pos:
-                    aux=aux.getSiguiente()
-                    i+=1
-                elemento=aux.getDato()
+                print(f"El elemento {item} no se encuentra en la lista")
         else:
-            print("El indice ingresado no es valido")
+            print("Pila Vacia. No existe el elemento",item)
         return elemento
 
     def localizar_posicion(self,item):
@@ -78,12 +90,13 @@ class ListaEncadenada:
             nuevoNodo.setSiguiente(aux)
             self.__cont+=1
 
-    def suprimir(self,pos):
-        elemento=None
+    def suprimir(self,item):
+        pos=None
         if self.vacia():
             print("Pila Vacia, no se pueden eliminar elementos")
         else:
-            if pos>=0 and pos<self.__cont:
+            pos=self.buscar(item)
+            if pos is not None:
                 aux=self.__pri
                 if pos==0:
                     self.__pri=aux.getSiguiente()
@@ -97,10 +110,9 @@ class ListaEncadenada:
                         i+=1
                     ant.setSiguiente(aux.getSiguiente())
                 self.__cont-=1
-                elemento=aux.getDato()
             else:
-                print("El indice ingresado no es valido")
-        return elemento
+                print(f"El elemento {item} no está en la lista. Por ende no puede ser suprimido")
+        return pos
 
     def buscar(self,item):
         aux=self.__pri
@@ -114,8 +126,8 @@ class ListaEncadenada:
             else:
                 aux=aux.getSiguiente()
                 i+=1
-        if band is False:
-            print(f"El elemento {item} no se encuentra en la lista")
+        #if band is False:
+        #    print(f"El elemento {item} no se encuentra en la lista")
         return pos
     def recuperar(self,pos):
         aux=self.__pri
@@ -143,11 +155,7 @@ if __name__=="__main__":
     l.insertar(-2)
     l.insertar(6)
     l.recorrer()
-    print("Se suprimio de la pos 3 el elemento: ",l.suprimir(3))
+    print("Se suprimio el elemento 6 de la posicion: ",l.suprimir(6))
     l.recorrer()
-    print("Se suprimio de la pos 3 el elemento: ",l.suprimir(3))
-    l.recorrer()
-    print("sig: ",l.siguiente(2))
-    print("ant: ",l.anterior(0))
-    print("pri:", l.primer_elemento())
-    print("ult:", l.ultimo_elemento())
+    print("ant: ",l.anterior(-5))
+    print("sig: ",l.siguiente(-5))
