@@ -121,7 +121,7 @@ class ListaEncadenada:
             elemento=None
             print("El indice ingresado no es valido")
         return elemento
-                
+
     def recorrer(self):
         aux=self.__pri
         while aux is not None:
@@ -160,4 +160,4 @@ if __name__=="__main__":
     print("El elemento siguiente a la posicion 1 es: ",l.siguiente(1))
     print("El elemento anterior a la posicion 1 es: ",l.anterior(1))
     print("El elemento anterior a la posicion 2 es: ",l.anterior(2))
-    print("El elemento anterior a la posicion 2 es: ",l.siguiente(2))
+    print("El elemento anterior a la posicion 2 es: ",l.siguiente(2)) if l.siguiente(2) is not None else print("")
