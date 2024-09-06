@@ -270,5 +270,5 @@ if __name__=="__main__":
     l2.insertar_contenido(21)
     l2.recorrer()
     print("Suprimir por contenido el 11")
-    l2.supimir_contenido(21)
+    l2.supimir_contenido(11)
     l2.recorrer()
