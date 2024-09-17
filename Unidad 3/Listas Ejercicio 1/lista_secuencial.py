@@ -3,49 +3,43 @@
 import numpy as np
 class ListaSecuencial:
     __ult:int
+    __dimension:int
     __arregloDatos:np.ndarray
-    def __init__(self):
+    def __init__(self,dimension=5):
         self.__ult=0
-        self.__arregloDatos=np.empty(5,dtype=int)
+        self.__dimension=dimension
+        self.__arregloDatos=np.empty(dimension,dtype=int)
 
     def vacia(self):
         return self.__ult==0
 
-    def llena(self):
-        return self.__ult==len(self.__arregloDatos)
-
     def siguiente(self,pos):
-        elemento=None
-        if pos>=0 and pos<=self.__ult:
-            if pos==self.__ult:
-                print("El indice ingresado no cuenta con un siguiente en la lista; es el ultimo")
-            else:
-                elemento= self.__arregloDatos[pos+1]
+        p1=None
+        if pos>=0 and pos<self.__ult-1:
+            p1=pos+1
         else:
             print("El indice ingresado no es valido")
-        return elemento
+        return p1
 
     def anterior(self,pos):
-        elemento=None
-        if pos>=0 and pos<=self.__ult:
-            if pos==0:
-                print("El indice ingresado no cuenta con un anterior en la lista; es el primero")
-            else:
-                elemento=self.__arregloDatos[pos-1]
+        p1=None
+        if pos>0 and pos<=self.__ult-1:
+            p1=pos-1
         else:
             print("El indice ingresado no es valido")
-        return elemento
+        return p1
 
     def primer_elemento(self):
         return self.__arregloDatos[0]
     def ultimo_elemento(self):
         return self.__arregloDatos[self.__ult-1]
+
     def insertar(self,item,pos):
-        if self.__ult < len(self.__arregloDatos):
+        if self.__ult < self.__dimension:
             if pos>=0 and pos<=self.__ult:
                 i= self.__ult
                 while i>pos:
-                    self.__arregloDatos[i]=self.anterior(i)
+                    self.__arregloDatos[i]=self.__arregloDatos[i-1]
                     i-=1
                 self.__arregloDatos[i]=item
                 self.__ult+=1
@@ -62,14 +56,12 @@ class ListaSecuencial:
         i=0
         posicion=None
         band=False
-        while i<self.__ult and band is False:
+        while i<=self.__ult and band is False:
             if self.__arregloDatos[i]==item:
                 posicion=i
                 band=True
             else:
                 i+=1
-        if band is False:
-            print(f"El elemento {item} no se encuentra en la lista")
         return posicion
 
     def recuperar(self,pos):
@@ -84,8 +76,8 @@ class ListaSecuencial:
         elemento=None
         if pos>=0 and pos<self.__ult:
             elemento=self.__arregloDatos[pos]
-            for i in range(pos,self.__ult-1,1):
-                self.__arregloDatos[i]= self.siguiente(i)
+            for i in range(pos,self.__ult-1):
+                self.__arregloDatos[i]= self.__arregloDatos[i+1]
             self.__ult-=1
         else:
             print("El indice ingresado no es valido")
@@ -119,4 +111,7 @@ if __name__=="__main__":
     print("Sumprimido en pos 0: ",l.suprimir(0))
     l.recorrer()
     print("Sumprimido en pos 2: ",l.suprimir(2))
+    l.recorrer()
+    print("insercion")
+    l.insertar(-12,2)
     l.recorrer()

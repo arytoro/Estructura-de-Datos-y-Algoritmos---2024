@@ -22,35 +22,24 @@ class ListaEncadenada:
 
     def anterior(self,pos):
         elemento=None
-        if pos>=0 and pos<self.__cont:
-            if pos==0:
-                print("El indice ingresado no cuenta con anterior; es el primero")
-            else:
-                i=0
-                aux=self.__pri
-                while i < pos-1:
-                    aux=aux.getSiguiente()
-                    i+=1
-                elemento=aux.getDato()
+        if pos>0 and pos<=self.__cont-1:
+            i=0
+            aux=self.__pri
+            while i < pos-1:
+                aux=aux.getSiguiente()
+                i+=1
+            elemento=aux.getDato()
         else:
             print("El indice ingresado no es valido")
         return elemento
 
     def siguiente(self,pos):
-        elemento=None
-        if pos>=0 and pos<self.__cont:
-            if pos==self.__cont-1:
-                print("El indice ingresado no cuenta con siguiente; es el ultimo")
-            else:
-                i=0
-                aux=self.__pri
-                while i <= pos:
-                    aux=aux.getSiguiente()
-                    i+=1
-                elemento=aux.getDato()
+        p=None
+        if pos>=0 and pos<self.__cont-1:
+            p=pos+1
         else:
             print("El indice ingresado no es valido")
-        return elemento
+        return p
 
     def insertar(self,item,pos):
         nuevoNodo=Nodo(item)
@@ -106,9 +95,8 @@ class ListaEncadenada:
             else:
                 aux=aux.getSiguiente()
                 i+=1
-        if band is False:
-            print(f"El elemento {item} no se encuentra en la lista")
         return pos
+
     def recuperar(self,pos):
         aux=self.__pri
         i=0
@@ -160,4 +148,4 @@ if __name__=="__main__":
     print("El elemento siguiente a la posicion 1 es: ",l.siguiente(1))
     print("El elemento anterior a la posicion 1 es: ",l.anterior(1))
     print("El elemento anterior a la posicion 2 es: ",l.anterior(2))
-    print("El elemento anterior a la posicion 2 es: ",l.siguiente(2)) if l.siguiente(2) is not None else print("")
+    print("El elemento siguiente a la posicion 2 es: ",l.anterior(0))
