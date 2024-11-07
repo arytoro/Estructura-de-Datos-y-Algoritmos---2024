@@ -221,13 +221,6 @@ class ArbolBinarioBusqueda:
         else:
             camino+= f" -> {destino} -|"
         return camino
-    
-    def menor(self):
-        if self.__raiz is not None:
-            subarbol= self.__raiz
-            while subarbol.getIzquierda() is not None:
-                subarbol= subarbol.getIzquierda()
-        print(f"El nodo menor es {subarbol.getDato()}")
 
 if __name__=="__main__":
     arbol=ArbolBinarioBusqueda()
