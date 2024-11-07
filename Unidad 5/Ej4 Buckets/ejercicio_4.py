@@ -1,4 +1,3 @@
-"""Ejercicio 4 - Unidad 5 / Mario Torrent"""
 #Politica de Manejo de colisiones: Buckets
 
 import numpy as np
@@ -63,7 +62,7 @@ class TablaHash:
         return elemento
 
 if __name__=="__main__":
-    tabla=TablaHash(11)#11->700
+    tabla=TablaHash(11)
     tabla.insertar(28731)
     tabla.insertar(2231)
     tabla.insertar(685)
