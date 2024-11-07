@@ -16,7 +16,14 @@ class Nodo:
         return self.__subArbol_der
     def setDato(self,dato):
         self.__dato= dato
-    def setSAI(self,sai):
-        self.__subArbol_izq= sai
-    def setSAD(self,sad):
-        self.__subArbol_der= sad
+    def setIzquierda(self,izq):
+        self.__subArbol_izq= izq
+    def setDerecha(self,der):
+        self.__subArbol_der= der
+    def getGrado(self):
+        grado=0
+        if (self.getDerecha() is not None and self.getIzquierda() is None) or (self.getDerecha() is None and self.getIzquierda() is not None):
+            grado=1
+        elif self.getDerecha() is not None and self.getIzquierda() is not None:
+            grado=2
+        return grado
