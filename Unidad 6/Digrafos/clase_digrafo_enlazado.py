@@ -38,7 +38,7 @@ class DigrafoEnlazado:
         print(d)
         return d
 
-    def camino(self,origen,destino):
+    def camino(self,origen,destino): #SI ESTAS PREPARANDO EL PARCIAL, EL CAMINO DE "clase_grafo_enlazado.py" ES MAS CORTO (PERO NO MEJOR QUE ESTE)
         camino="|"
         band=False
         d= np.empty(self.__numNodos,dtype=object)
@@ -108,7 +108,7 @@ class DigrafoEnlazado:
                     cola.insertar(u+1)
         return all(visitados) #El all evalua si todos los elementos del arreglo son True. En caso de serlo devuelve un True, sino False.
 
-    def es_aciclico(self):
+    def es_aciclico(self): #NO FUNCIONA CORRECTAMENTE
         visitados= np.full(self.__numNodos,False,dtype=bool)
         for i in range(self.__numNodos):
             if visitados[i]==False:
