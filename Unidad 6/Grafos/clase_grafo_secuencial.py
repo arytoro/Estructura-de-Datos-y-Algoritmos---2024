@@ -30,7 +30,7 @@ class GrafoSecuencial:
         #print(d)
         return d
 
-    def camino(self,origen,destino):
+    def camino(self,origen,destino): #SI ESTAS PREPARANDO EL PARCIAL, EL CAMINO DE "clase_grafo_enlazado.py" ES MAS CORTO (PERO NO MEJOR QUE ESTE)
         rea_origen= self.REA(origen)
         if rea_origen[destino-1]!=0 and rea_origen[destino-1]!= float('inf'): #Reviso si existe un camino desde origen a destino
             d= np.empty(self.__numNodos,dtype=object)
@@ -101,38 +101,7 @@ class GrafoSecuencial:
                     cola.insertar(u+1)
         return all(visitados) #El all evalua si todos los elementos del arreglo son True. En caso de serlo devuelve un True, sino False.
 
-    def es_aciclico(self):
-        aciclico= True
-        i=0
-        j=0
-        k=0
-        while i < self.__numNodos and aciclico is True:
-            while j  < self.__numNodos and aciclico is True:
-                if self.adyacente(i+1,j+1):
-                    while k < self.__numNodos and aciclico is True:
-                        if self.adyacente(j+1,k+1) and self.adyacente(k+1,i+1):
-                            aciclico=False
-                        k+=1
-                j+=1
-            i+=1
-        return aciclico
-        #visitados= np.full(self.__numNodos,False,dtype=bool)
-        #for u in range(self.__numNodos):
-        #    if visitados[u]==False: #Revisamos los nodos que aun no fueron visitados
-        #        if self.detectar_ciclo(u,visitados,-1) is False: #Si 
-        #            return False
-        #return True
-
-    def detectar_ciclo(self, s, visitados, ant):
-        visitados[s] = True #Marcamos como visitado el nodo recibido
-        for i in range(self.__numNodos):
-            if self.adyacente(s+1, i+1): 
-                if visitados[i]==False: #Si otro de los nodos no visitados es adyacente a "s"
-                    if self.detectar_ciclo(i,visitados,s) is False:
-                        return False
-                elif i!=ant:
-                    return False
-        return True
+   #FALTA LA FUNCION ES ACÍCLICO
 
     def establecer_relaciones(self):
         self.__grafo[0][1]=1
