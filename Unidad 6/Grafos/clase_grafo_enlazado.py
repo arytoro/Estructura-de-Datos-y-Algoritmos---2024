@@ -37,7 +37,7 @@ class GrafoEnlazado:
         #print(d)
         return d
 
-    def camino(self,origen,destino):
+    def camino(self,origen,destino): #Si me lo pidieran en parcial haría este. Pero el que mejor funciona es el que esta comentado abajo de este.
         cola= ColaEncadenada()
         d= np.empty(self.__numNodos,dtype=object)
         for i in range(len(d)):
@@ -145,7 +145,7 @@ class GrafoEnlazado:
         return all(visitados) #El all evalua si todos los elementos del arreglo son True. En caso de serlo devuelve un True, sino False.
 
 
-    def es_aciclico(self):
+    def es_aciclico(self): #NO FUNCIONA CORRECTAMENTE
         visitados= np.full(self.__numNodos,False,dtype=bool)
         for i in range(self.__numNodos):
             if visitados[i]==False:
