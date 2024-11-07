@@ -1,4 +1,3 @@
-"""Ejercicio 4 - Unidad 5 / Mario Torrent"""
 #Politica de Manejo de colisiones: Buckets
 
 import numpy as np
